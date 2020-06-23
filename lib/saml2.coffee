@@ -100,7 +100,10 @@ create_logout_request = (issuer, name_id, session_index, destination) ->
       '@IssueInstant': (new Date()).toISOString()
       '@Destination': destination
       'saml:Issuer': issuer
-      'saml:NameID': name_id
+      'saml:NameID': {
+          '#text': name_id,
+          '@Format': 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress',
+       },
       'samlp:SessionIndex': session_index
   .end()
 
